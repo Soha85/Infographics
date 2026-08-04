@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>TOGAF Infographics Catalog - Learn Enterprise Architecture</title>
+    <meta name="description" content="A comprehensive visual guide to mastering TOGAF (The Open Group Architecture Framework) through professional infographics." />    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" crossorigin href="/assets/index-u26PjrdT.css">
+
+    <style>
+      body {
+        margin: 0;
+        padding: 40px 20px;
+        background-color: #f8f9fa;
+        font-family: 'Geist', sans-serif;
+      }
+      .catalog-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .header-title {
+        font-size: 2.5rem;
+        color: #111827;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+      .header-subtitle {
+        color: #4b5563;
+        margin-bottom: 40px;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        margin-top: 20px;
+      }
+      .infographic-card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .infographic-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+      .infographic-img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: contain;
+      }
+      .card-title {
+        margin-top: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #1f2937;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="catalog-container">
+      <h1 class="header-title">TOGAF Infographics Catalog</h1>
+      
+      <p class="header-subtitle">Select or view enterprise architecture frameworks below.</p>
+      <p><a href="index_1.html">Another Infographic page</a></p>
+      <div class="gallery-grid" id="infographicsCatalog"></div>
+      
+    </div>
+
+    <script>
+      const infographicFiles = [
+        { title: "What is TOGAF", file: "01_what_is_togaf.png" },
+        { title: "Why use TOGAF", file: "02_why_use_togaf.png" },
+        { title: "ADM Lifecycle", file: "03_adm_lifecycle.png" },
+        { title: "TOGAF Components", file: "04_core_concepts.png" },
+        { title: "Reference Models", file: "05_reference_models.png" },
+        { title: "ADM Techniques", file: "06_adm_techniques.png" },
+        { title: "Governance Contracts", file: "07_governance_contracts.png" },
+        { title: "Success Failures", file: "08_success_failure.png" },
+        { title: "Output Deliverables", file: "09_outputs_deliverables.png" },
+      ];
+      const catalogContainer = document.getElementById('infographicsCatalog');
+      infographicFiles.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'infographic-card';
+        
+        // FIXED: The href link points directly to the real PNG image location, 
+        // and target="_blank" opens it seamlessly in a brand new browser tab.
+        card.innerHTML = `
+          <a href="/${item.file}" target="_blank" class="infographic-link">
+            <img src="/${item.file}" alt="${item.title}" class="infographic-img" />
+          </a>
+          <div class="card-title">${item.title}</div>
+        `;
+        catalogContainer.appendChild(card);
+      });
+      function activeRouteGuard() {
+        const path = window.location.pathname;
+        if (path === '/404' || path === '/error') {
+          window.history.replaceState({}, '', '/');
+        }
+      }
+      window.addEventListener('DOMContentLoaded', activeRouteGuard);
+    </script>
+
+  </body>
+</html>
